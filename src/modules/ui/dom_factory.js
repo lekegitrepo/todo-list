@@ -1,4 +1,4 @@
-class DOMFactory {
+export class DOMFactory {
   constructor(){}
 
   createFormWithInput(...formContents){

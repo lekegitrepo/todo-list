@@ -129,7 +129,67 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_app_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/app.scss */ \"./src/style/app.scss\");\n/* harmony import */ var _style_app_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_app_scss__WEBPACK_IMPORTED_MODULE_0__);\n\nconsole.log('Webpack is working like charm !');\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/app */ \"./src/modules/app.js\");\n/* harmony import */ var _style_app_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/app.scss */ \"./src/style/app.scss\");\n/* harmony import */ var _style_app_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_app_scss__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconsole.log('Webpack is working like charm !');\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/app.js":
+/*!****************************!*\
+  !*** ./src/modules/app.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _todo_modules_todo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todo_modules/todo */ \"./src/modules/todo_modules/todo.js\");\n/* harmony import */ var _todo_modules_project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_modules/project */ \"./src/modules/todo_modules/project.js\");\n/* harmony import */ var _ui_todo_dom_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/todo_dom_factory */ \"./src/modules/ui/todo_dom_factory.js\");\n\n\n\nconsole.log('This app.js file');\nvar todo = new _todo_modules_todo__WEBPACK_IMPORTED_MODULE_0__[\"Todo\"]('', '', '', '');\nvar project = new _todo_modules_project__WEBPACK_IMPORTED_MODULE_1__[\"Project\"]('Coding');\nvar dom = new _ui_todo_dom_factory__WEBPACK_IMPORTED_MODULE_2__[\"TodoDom\"]();\nvar todoProject = JSON.parse(window.localStorage.getItem('projects'));\n\nif (todoProject == null) {\n  todoProject = [];\n}\n\nfunction updateLocalStorage(array) {\n  window.localStorage.setItem('projects', JSON.stringify(array));\n}\n\n//# sourceURL=webpack:///./src/modules/app.js?");
+
+/***/ }),
+
+/***/ "./src/modules/todo_modules/project.js":
+/*!*********************************************!*\
+  !*** ./src/modules/todo_modules/project.js ***!
+  \*********************************************/
+/*! exports provided: Project */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Project\", function() { return Project; });\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar Project =\n/*#__PURE__*/\nfunction () {\n  function Project(name) {\n    _classCallCheck(this, Project);\n\n    this._name = name;\n    this.todoArray = [];\n    console.log('This Project file');\n  }\n\n  _createClass(Project, [{\n    key: \"addTodo\",\n    value: function addTodo(todo) {\n      todoArray.push(todo);\n    }\n  }, {\n    key: \"allTodoEntry\",\n    value: function allTodoEntry() {\n      return todoArray;\n    }\n  }, {\n    key: \"projectName\",\n    get: function get() {\n      return this._name;\n    }\n  }]);\n\n  return Project;\n}();\n\n//# sourceURL=webpack:///./src/modules/todo_modules/project.js?");
+
+/***/ }),
+
+/***/ "./src/modules/todo_modules/todo.js":
+/*!******************************************!*\
+  !*** ./src/modules/todo_modules/todo.js ***!
+  \******************************************/
+/*! exports provided: Todo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Todo\", function() { return Todo; });\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar Todo =\n/*#__PURE__*/\nfunction () {\n  function Todo(title, description, dueDate, priority) {\n    var status = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;\n\n    _classCallCheck(this, Todo);\n\n    this._title = title;\n    this._description = description;\n    this._dueDate = dueDate;\n    this._priority = priority;\n    this.status = status;\n    console.log('This Todo file');\n  }\n\n  _createClass(Todo, [{\n    key: \"getStatus\",\n    value: function getStatus() {\n      return this.status;\n    }\n  }, {\n    key: \"setStatus\",\n    value: function setStatus() {\n      return this.status == false ? true : false;\n    }\n  }, {\n    key: \"title\",\n    get: function get() {\n      return this._title;\n    },\n    set: function set(title) {\n      return this._title = title;\n    }\n  }, {\n    key: \"description\",\n    get: function get() {\n      return this._description;\n    },\n    set: function set(description) {\n      return this._description = description;\n    }\n  }, {\n    key: \"priority\",\n    get: function get() {\n      return this._priority;\n    },\n    set: function set(priority) {\n      return this._priority = priority;\n    }\n  }, {\n    key: \"dueDate\",\n    get: function get() {\n      return this._dueDate;\n    },\n    set: function set(date) {\n      return this._dueDate = date;\n    }\n  }]);\n\n  return Todo;\n}();\n\n//# sourceURL=webpack:///./src/modules/todo_modules/todo.js?");
+
+/***/ }),
+
+/***/ "./src/modules/ui/dom_factory.js":
+/*!***************************************!*\
+  !*** ./src/modules/ui/dom_factory.js ***!
+  \***************************************/
+/*! exports provided: DOMFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DOMFactory\", function() { return DOMFactory; });\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar DOMFactory =\n/*#__PURE__*/\nfunction () {\n  function DOMFactory() {\n    _classCallCheck(this, DOMFactory);\n  }\n\n  _createClass(DOMFactory, [{\n    key: \"createFormWithInput\",\n    value: function createFormWithInput() {\n      var form = document.createElement('form');\n\n      for (var _len = arguments.length, formContents = new Array(_len), _key = 0; _key < _len; _key++) {\n        formContents[_key] = arguments[_key];\n      }\n\n      formContents.forEach(function (tag) {\n        form.appendChild(tag);\n      });\n      return form;\n    }\n  }, {\n    key: \"addClassToElement\",\n    value: function addClassToElement(element, attr) {\n      return element.classList.add(attr);\n    }\n  }, {\n    key: \"addIdToElement\",\n    value: function addIdToElement(element, value) {\n      return element.setAttribute('id', value);\n    }\n  }]);\n\n  return DOMFactory;\n}();\n\n//# sourceURL=webpack:///./src/modules/ui/dom_factory.js?");
+
+/***/ }),
+
+/***/ "./src/modules/ui/todo_dom_factory.js":
+/*!********************************************!*\
+  !*** ./src/modules/ui/todo_dom_factory.js ***!
+  \********************************************/
+/*! exports provided: TodoDom */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TodoDom\", function() { return TodoDom; });\n/* harmony import */ var _dom_factory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom_factory */ \"./src/modules/ui/dom_factory.js\");\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\n\nvar TodoDom =\n/*#__PURE__*/\nfunction (_DOMFactory) {\n  _inherits(TodoDom, _DOMFactory);\n\n  function TodoDom() {\n    var _this;\n\n    _classCallCheck(this, TodoDom);\n\n    _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoDom).call(this));\n    console.log('This TodoDom file');\n    return _this;\n  }\n\n  return TodoDom;\n}(_dom_factory__WEBPACK_IMPORTED_MODULE_0__[\"DOMFactory\"]);\n\n//# sourceURL=webpack:///./src/modules/ui/todo_dom_factory.js?");
 
 /***/ }),
 

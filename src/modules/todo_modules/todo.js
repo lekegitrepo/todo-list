@@ -5,6 +5,7 @@ export class Todo {
     this._dueDate = dueDate;
     this._priority = priority;
     this.status = status;
+    console.log('This Todo file');
   }
 
   get title() {
