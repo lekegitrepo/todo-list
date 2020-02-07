@@ -11,8 +11,15 @@
   <main>
     <div class="mx-3 mt-4">
       <div class="row">
-        <div id="project-list" class="col-5">Projects Categories</div>
-        <div id="todo-entries" class="col-7">Todo entries</div>
+        <div class="col-5 project-container">
+          <div class="text-center"><h5>Projects Categories</h5></div>
+          <div id="project-list"></div>
+          <div class="text-center"><button id="add-new-project" class="btn btn-danger btn-lg">Create New Category</button></div>
+        </div>
+        <div class="col-7 todo-container">
+          <div class="text-center"><h5>Todo entries</h5></div>
+          <div id="todo-entries"></div>
+        </div>
       </div>
     </div>
   </main>

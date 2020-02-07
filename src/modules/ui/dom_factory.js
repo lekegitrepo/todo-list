@@ -1,5 +1,7 @@
 export class DOMFactory {
-  constructor(){}
+  constructor(){
+    console.log('This DOMFactory file');
+  }
 
   createFormWithInput(...formContents){
     const form = document.createElement('form');
