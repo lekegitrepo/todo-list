@@ -21,6 +21,8 @@ const dom = new DOMFactory();
 const btnProject = document.getElementById("add-new-project");
 const projectList = document.getElementById("project-list");
 const todoEntry = document.getElementById("todo-entries");
+const newProject = document.getElementById("new-project");
+const projectForm = document.getElementById("project-form");
 
 function temporaryCreateProject() {
   const newProjectElement = document.createElement("div");
@@ -34,7 +36,20 @@ function displayTodo(elem) {
   todoEntry.textContent = elem.textContent;
 }
 
+function toggleForm(formElem) {
+  console.log("create new project button is clicked");
+  if (formElem.style.display == "block") {
+    formElem.style.display = "none";
+  } else {
+    formElem.style.display = "block";
+  }
+}
+
 btnProject.addEventListener("click", temporaryCreateProject);
+
+newProject.addEventListener("click", () => {
+  toggleForm(projectForm);
+});
 
 projectList.addEventListener("click", e => {
   displayTodo(e.target);
