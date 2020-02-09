@@ -5,7 +5,7 @@ export class Project {
     console.log('This Project file');
   }
 
-  get projectName() {
+  get name() {
     return this._name;
   }
 

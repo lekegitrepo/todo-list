@@ -20,6 +20,7 @@ const dom = new DOMFactory();
 
 const btnProject = document.getElementById("add-new-project");
 const projectList = document.getElementById("project-list");
+const todoEntry = document.getElementById("todo-entries");
 
 function temporaryCreateProject() {
   const newProjectElement = document.createElement("div");
@@ -28,4 +29,13 @@ function temporaryCreateProject() {
   projectList.appendChild(newProjectElement);
 }
 
+function displayTodo(elem) {
+  console.log("Todo List");
+  todoEntry.textContent = elem.textContent;
+}
+
 btnProject.addEventListener("click", temporaryCreateProject);
+
+projectList.addEventListener("click", e => {
+  displayTodo(e.target);
+});
