@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Todo List</title>
-</head>
-<body>
-  <header>
-    <nav class="navbar"><a class="navbar-brand mx-auto" href="#">Todo List</a></nav>
-  </header>
+  <head>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="navbar-brand mx-auto" href="#">Todo List</a>
+      </nav>
+    </header>
 
-  <main>
-    <div class="mx-3 mt-4">
-      <div class="row">
-        <div class="col-5 project-container">
-          <div class="text-center"><h5>Projects Categories</h5></div>
-          <div id="project-list"></div>
-          <div class="text-center"><button id="add-new-project" class="btn btn-danger btn-lg">Create New Category</button></div>
-        </div>
-        <div class="col-7 todo-container">
-          <div class="text-center"><h5>Todo entries</h5></div>
-          <div id="todo-entries"></div>
+    <main>
+      <div class="mx-3 mt-4">
+        <div class="row">
+          <div class="col-5 project-container">
+            <div class="text-center"><h5>Projects Categories</h5></div>
+            <div id="new-project">
+              <span>+ </span> <span>Create New Category</span>
+              <div id="project-form" class="form-group">
+                <input
+                  id="project-name"
+                  class="form-control"
+                  type="text"
+                  name="project"
+                />
+                <div class="text-center">
+                  <button id="add-new-project" class="btn btn-danger btn-lg">
+                    Create New
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="project-list"></div>
+          </div>
+          <div class="col-7 todo-container">
+            <div class="text-center"><h5>Todo entries</h5></div>
+            <div id="todo-entries"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-  <footer></footer>
-  <script type="text/javascript" src="main.js"></script>
-</body>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
