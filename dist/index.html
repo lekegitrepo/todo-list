@@ -38,6 +38,28 @@
           <div class="col-7 todo-container">
             <div class="text-center"><h5>Todo entries</h5></div>
             <div id="todo-entries"></div>
+            <button id="todo-task" class="btn btn-warning">Add new todo Task</button>
+            <div class="mb-4">
+              <div class="form-group">
+                <input type="text" class="form-control" id="title" placeholder="Title of the todo task here!">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" id="description" rows="3" placeholder="Describe and give the details of the task here"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="priority">Set Priority</label>
+                <select class="form-control" id="priority">
+                  <option>High</option>
+                  <option>Medium</option>
+                  <option>Low</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="duedate">Deadline</label>
+                <input type="date" id="duedate" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary" id="create-todo">Create Todo Task</button>
+            </div>
           </div>
         </div>
       </div>
