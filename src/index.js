@@ -26,6 +26,7 @@ const projectName = document.getElementById("project-name");
 function createProject() {
   if (projectName.value != "") {
     const newProjectElement = document.createElement("div");
+    newProjectElement.setAttribute('data-index', (todoProject.length - 1) + 1)
     newProjectElement.textContent = projectName.value;
     const project = new Project(projectName.value);
     console.log(project.name);
@@ -34,6 +35,7 @@ function createProject() {
     projectForm.style.display = "none";
   }
   console.log(todoProject.length);
+  console.log(getProject())
 }
 
 function displayTodo(elem) {
@@ -50,6 +52,13 @@ function toggleForm(formElem) {
   } else {
     formElem.style.display = "block";
   }
+}
+
+const getProject = (project = todoProject.length - 1) => {
+  if (todoProject.length < 1) {
+    return null;
+  }
+    return todoProject[project];
 }
 
 btnProject.addEventListener("click", createProject);
