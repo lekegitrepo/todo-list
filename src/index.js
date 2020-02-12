@@ -20,8 +20,9 @@ const todoEntry = document.getElementById("todo-entries");
 const newProject = document.getElementById("new-project");
 const projectForm = document.getElementById("project-form");
 const todoBtn = document.getElementById('todo-task');
-const todoForm = document.getElementById('form-container');
+const createTodo = document.getElementById('create-todo');
 
+const todoForm = document.getElementById('form-container');
 const projectName = document.getElementById("project-name");
 
 function createProject() {
@@ -32,28 +33,12 @@ function createProject() {
     const project = new Project(projectName.value);
     console.log(project.name);
     todoProject.push(project);
+    updateLocalStorage(todoProject);
     projectList.appendChild(newProjectElement);
     projectForm.style.display = "none";
   }
   console.log(todoProject.length);
   console.log(getCurrentProject())
-}
-
-function displayTodo(elem) {
-  const todoList = todoProject[parseInt(elem.getAttribute('data-index'), 10)].todoArray;
-  console.log(todoList);
-  if (todoList !== null || todoList !== undefined) {
-    todoEntry.textContent = todoList;
-  }
-}
-
-function toggleForm(formElem) {
-  console.log("create new project button is clicked");
-  if (formElem.style.display == "block") {
-    formElem.style.display = "none";
-  } else {
-    formElem.style.display = "block";
-  }
 }
 
 const getCurrentProject = (project = todoProject.length - 1) => {
@@ -63,15 +48,45 @@ const getCurrentProject = (project = todoProject.length - 1) => {
     return todoProject[project];
 }
 
+const getProjectIndex = (elem) => {
+  let project = null
+  if (elem === undefined) {
+    project = getCurrentProject();
+  }else {
+   project = todoProject[parseInt(elem.getAttribute('data-index'), 10)]
+  }
+  return project;
+}
+
+function displayTodo(elem) {
+  const todoList = getProjectIndex().todoArray;
+  console.log(todoList);
+  if (elem !== null || elem !== undefined) {
+    todoEntry.textContent = getProjectIndex(elem).todoArray;
+  }else {
+    todoEntry.textContent = getProjectIndex().todoArray;
+  }
+}
+
+function toggleForm(formElem) {
+  console.log("create button is clicked");
+  if (formElem.style.display == "block") {
+    formElem.style.display = "none";
+  } else {
+    formElem.style.display = "block";
+  }
+}
+
 const getProjectTodoList = () => getCurrentProject().todoArray;
 
-const addTodo = (projectIndex = null) => {
+const addTodo = (projectIndex) => {
   const todo = new Todo("Shopping", "Buy Clothes", "Low", "13-02-2020");
-  if (projectIndex == null) {
+  if (projectIndex == undefined) {
     getCurrentProject().todoArray.push(todo);
   }else {
     getCurrentProject(projectIndex).todoArray.push(todo);
   }
+  updateLocalStorage(todoProject);
 }
 
 btnProject.addEventListener("click", createProject);
@@ -84,6 +99,14 @@ todoBtn.addEventListener('click', () => {
   toggleForm(todoForm)
 })
 
+createTodo.addEventListener('click', () => {
+  addTodo();
+});
+
 projectList.addEventListener("click", e => {
   displayTodo(e.target);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  displayTodo();
 });
