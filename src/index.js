@@ -40,9 +40,10 @@ function createProject() {
 }
 
 function displayTodo(elem) {
-  console.log("Todo List");
-  if (projectName.value != "") {
-    todoEntry.textContent = projectName.value;
+  const todoList = todoProject[parseInt(elem.getAttribute('data-index'), 10)].todoArray;
+  console.log(todoList);
+  if (todoList !== null || todoList !== undefined) {
+    todoEntry.textContent = todoList;
   }
 }
 
