@@ -12,6 +12,8 @@ function updateLocalStorage(array) {
   window.localStorage.setItem("projects", JSON.stringify(array));
 }
 
+console.log(todoProject.length);
+
 const dom = new DOMFactory();
 
 const btnProject = document.getElementById("add-new-project");
@@ -59,13 +61,25 @@ const getProjectIndex = (elem) => {
 }
 
 function displayTodo(elem) {
-  const todoList = getProjectIndex().todoArray;
-  console.log(todoList);
   if (elem !== null || elem !== undefined) {
     todoEntry.textContent = getProjectIndex(elem).todoArray;
+    console.log(getProjectIndex(elem).todoArray);
   }else {
     todoEntry.textContent = getProjectIndex().todoArray;
+    console.log(getProjectIndex().todoArray);
   }
+}
+
+function displayProject(){
+  console.log('display project ' + todoProject.length)
+  console.log(todoProject)
+  todoProject.forEach((project, index) => {
+    const projectElem = document.createElement("div");
+    projectElem.setAttribute('data-index', index);
+    projectElem.textContent = project.name;
+    projectList.appendChild(projectElem);
+  })
+  displayTodo();
 }
 
 function toggleForm(formElem) {
@@ -86,7 +100,6 @@ const addTodo = (projectIndex) => {
   }else {
     getCurrentProject(projectIndex).todoArray.push(todo);
   }
-  updateLocalStorage(todoProject);
 }
 
 btnProject.addEventListener("click", createProject);
@@ -108,5 +121,5 @@ projectList.addEventListener("click", e => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  displayTodo();
+  displayProject();
 });
