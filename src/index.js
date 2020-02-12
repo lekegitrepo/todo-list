@@ -12,7 +12,6 @@ function updateLocalStorage(array) {
   window.localStorage.setItem("projects", JSON.stringify(array));
 }
 
-const todo = new Todo("", "", "", "");
 const dom = new DOMFactory();
 
 const btnProject = document.getElementById("add-new-project");
@@ -64,6 +63,15 @@ const getCurrentProject = (project = todoProject.length - 1) => {
 }
 
 const getProjectTodoList = () => getCurrentProject().todoArray;
+
+const addTodo = (projectIndex = null) => {
+  const todo = new Todo("Shopping", "Buy Clothes", "Low", "13-02-2020");
+  if (projectIndex == null) {
+    getCurrentProject().todoArray.push(todo);
+  }else {
+    getCurrentProject(projectIndex).todoArray.push(todo);
+  }
+}
 
 btnProject.addEventListener("click", createProject);
 
