@@ -20,6 +20,8 @@ const projectList = document.getElementById("project-list");
 const todoEntry = document.getElementById("todo-entries");
 const newProject = document.getElementById("new-project");
 const projectForm = document.getElementById("project-form");
+const todoBtn = document.getElementById('todo-task');
+const todoForm = document.getElementById('form-container');
 
 const projectName = document.getElementById("project-name");
 
@@ -66,6 +68,10 @@ btnProject.addEventListener("click", createProject);
 newProject.addEventListener("click", () => {
   toggleForm(projectForm);
 });
+
+todoBtn.addEventListener('click', () => {
+  toggleForm(todoForm)
+})
 
 projectList.addEventListener("click", e => {
   displayTodo(e.target);
