@@ -37,7 +37,7 @@ function createProject() {
     projectForm.style.display = "none";
   }
   console.log(todoProject.length);
-  console.log(getProject())
+  console.log(getCurrentProject())
 }
 
 function displayTodo(elem) {
@@ -56,12 +56,14 @@ function toggleForm(formElem) {
   }
 }
 
-const getProject = (project = todoProject.length - 1) => {
+const getCurrentProject = (project = todoProject.length - 1) => {
   if (todoProject.length < 1) {
     return null;
   }
     return todoProject[project];
 }
+
+const getProjectTodoList = () => getCurrentProject().todoArray;
 
 btnProject.addEventListener("click", createProject);
 
