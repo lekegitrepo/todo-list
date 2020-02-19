@@ -1,6 +1,6 @@
 import { Todo } from "./modules/todo_modules/todo";
 import { Project } from "./modules/todo_modules/project";
-import { DOMFactory } from "./modules/ui/dom_factory";
+import { TodoDom } from "./modules/ui/todo_dom_factory";
 import "./style/app.scss";
 
 let todoProject = JSON.parse(window.localStorage.getItem("projects"));
@@ -14,7 +14,7 @@ function updateLocalStorage(array) {
 
 console.log(todoProject.length);
 
-const dom = new DOMFactory();
+const todoDom = new TodoDom();
 
 const btnProject = document.getElementById("add-new-project");
 const projectList = document.getElementById("project-list");
@@ -61,18 +61,19 @@ const getProjectIndex = (elem) => {
 }
 
 function displayTodo(elem) {
-  if (elem !== null || elem !== undefined) {
-    todoEntry.textContent = getProjectIndex(elem).todoArray;
-    console.log(getProjectIndex(elem).todoArray);
+
+  if (todoProject.length < 1) { return;}
+
+  if (elem !== null && elem !== undefined) {
+    todoDom.renderTodoList(getProjectIndex(elem).todoArray, todoEntry)
   }else {
-    todoEntry.textContent = getProjectIndex().todoArray;
-    console.log(getProjectIndex().todoArray);
+    todoDom.renderTodoList(getProjectIndex().todoArray, todoEntry)
   }
 }
 
 function displayProject(){
   console.log('display project ' + todoProject.length)
-  console.log(todoProject)
+  //console.log(todoProject)
   todoProject.forEach((project, index) => {
     const projectElem = document.createElement("div");
     projectElem.setAttribute('data-index', index);
@@ -80,6 +81,7 @@ function displayProject(){
     projectList.appendChild(projectElem);
   })
   displayTodo();
+  //console.log(getCurrentProject().name)
 }
 
 function toggleForm(formElem) {
@@ -100,6 +102,7 @@ const addTodo = (projectIndex) => {
   }else {
     getCurrentProject(projectIndex).todoArray.push(todo);
   }
+  updateLocalStorage(todoProject);
 }
 
 btnProject.addEventListener("click", createProject);
@@ -120,6 +123,4 @@ projectList.addEventListener("click", e => {
   displayTodo(e.target);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  displayProject();
-});
+document.addEventListener('DOMContentLoaded', displayProject);
