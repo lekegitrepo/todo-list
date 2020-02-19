@@ -1,43 +1,11 @@
 export class Todo {
   constructor(title, description, priority, dueDate, status = false){
-    this._title = title;
-    this._description = description;
-    this._dueDate = dueDate;
-    this._priority = priority;
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
     this.status = status;
     console.log('This Todo file');
-  }
-
-  get title() {
-    return this._title;
-  }
-
-  set title(title) {
-    return this._title = title;
-  }
-
-  get description() {
-    return this._description;
-  }
-
-  set description(description) {
-    return this._description = description;
-  }
-
-  get priority() {
-    return this._priority;
-  }
-
-  set priority(priority) {
-    return this._priority = priority;
-  }
-
-  get dueDate() {
-    return this._dueDate;
-  }
-
-  set dueDate(date) {
-    return this._dueDate = date;
   }
 
   getStatus(){
